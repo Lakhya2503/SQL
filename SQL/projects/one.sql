@@ -9,7 +9,7 @@
 --  ----------------------- CREATE TABLE -----------------------
 
 -- CREATE TABLE employees(
---     emp_id  SERIAL PRIMARY KEY,  -- UNIQUE and serial wise id
+--     emp_id  SERIAL PRIMARY KEY,  -   - UNIQUE and serial wise id
 --     fname varchar(20) NOT NULL, -- fname is not null means not empty
 --     lname varchar(20) NOT NULL, -- lname is not null means not empty
 --     email VARCHAR(100) NOT NULL UNIQUE, -- email is not null means not empty and also unique

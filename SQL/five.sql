@@ -1,0 +1,33 @@
+-- ---------------- GROUP BY DATABASE -------------------
+
+-- get all department
+-- SELECT dept FROM employees GROUP BY dept;
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- get department members
+-- SELECT dept, COUNT(emp_id) FROM employees GROUP BY dept;
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- sum of salary by department
+-- SELECT dept, SUM(Salary) FROM employees GROUP BY dept;
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- average of salary by department
+-- SELECT dept, AVG(Salary) FROM employees GROUP BY dept;
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- MIN of salary by department
+-- SELECT dept, MIN(Salary) FROM employees GROUP BY dept;
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- MAX of salary by department
+-- SELECT dept, MAX(Salary) FROM employees GROUP BY dept;
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+

@@ -1,0 +1,28 @@
+-- Active: 1774897613985@@localhost@5432@bankdb
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+-- ---------------- AGGREGATION DATABASE -------------------
+
+-- SELECT COUNT(emp_id) FROM employees; -- count of emp_id means count of users
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- SELECT COUNT(fname) FROM employees; -- count of fname means count of users **but most of the cases id's will be count's
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- SELECT SUM(salary) FROM employees; -- total salary of employees
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- SELECT AVG(salary) FROM employees; -- average salary of employees
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- SELECT MIN(salary) FROM employees; -- Minimum salary of employees
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+-- SELECT MAX(salary) FROM employees; -- maximum salary of employees
+
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
