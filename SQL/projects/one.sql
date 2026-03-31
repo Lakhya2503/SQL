@@ -40,7 +40,7 @@
 
 --  ----------------------- SEE TABLE VALUES -----------------------
 
--- SELECT * FROM employees;
+SELECT * FROM employees;
 
 
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
