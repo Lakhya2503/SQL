@@ -28,20 +28,26 @@
 
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-SELECT CONCAT_WS(' ', fname, lname) AS FullName FROM employees;
+-- SELECT CONCAT_WS(' ', fname, lname) AS FullName FROM employees;
 
 
 -- as you can see the speration on this field of fname and lname then he will shows firsName lastName like that
 
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
--- 01:56:40
+-- SELECT SUBSTR('Hello buddy', 1, 6)
 
+-- this will cut the words from firstly give a word then from starting index to ending index
 
+-- SELECT substr(fname, 1, 2) FROM employees -- real life example
 
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+-- SELECT length(fname) FROM employees;
+--  ex.
+--  SELECT * FROM employees WHERE length (fname) > 5;
 
-
-
+-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 
