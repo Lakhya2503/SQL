@@ -1,3 +1,4 @@
+-- Active: 1776884127143@@127.0.0.1@5432@bankdb
 
 -- ---------------- STRING FUNCTIONS -------------------
 ---------------- ----------------
@@ -45,7 +46,7 @@
 
 -- SELECT length(fname) FROM employees;
 --  ex.
---  SELECT * FROM employees WHERE length (fname) > 5;
+ SELECT * FROM employees WHERE length (fname) > 5;
 
 -- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
