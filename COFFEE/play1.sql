@@ -59,5 +59,44 @@ SELECT * FROM books;
 -- SELECT "title","author","genre" FROM "books" WHERE NOT "genre" = 'Mystery';
 
 -- ============ XXXXXXXXX ============
+-- ##############################
+--                         OR
+-- -- ##############################
+-- SELECT "title", "author" FROM "books" WHERE "publicationyear" = 2014 OR
+-- "publicationyear" = 2013;
+-- SELECT "title", "author","publicationyear" FROM "books" WHERE "publicationyear" = 2014 OR
+-- "publicationyear" = 2013;
 
--- 36:56
+
+-- ============ XXXXXXXXX ============
+-- ##############################
+--                         AND
+-- ##############################
+
+SELECT "title","author","publicationyear","genre" FROM "books"
+WHERE ( "publicationyear" = 2013 OR "publicationyear" = 2014) AND
+NOT "genre" = 'Science Fiction';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
