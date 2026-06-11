@@ -1,5 +1,8 @@
 -- Active: 1780485397087@@localhost@5433@employees
 
+CREATE DATABASE "users";
+
+
 
 -- SELECT * FROM 'employees';
 
