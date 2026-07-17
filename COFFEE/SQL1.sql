@@ -1,6 +1,6 @@
--- Active: 1780485397087@@localhost@5433@employees
+-- Active: 1781180299291@@127.0.0.1@5433@users
 
-CREATE DATABASE "users";
+-- CREATE DATABASE "users";
 
 
 
@@ -87,9 +87,9 @@ CREATE DATABASE "users";
 -- SELECT AVG(score) as class_average FROM exam_scores;
 
 
-SELECT
-    s.name as student_name,
-    s.brach as student_branch,
-    e.score
-FROM exam_scores as e
-INNER JOIN students as s ON s.student_id = e.student_id;
+-- SELECT
+--     s.name as student_name,
+--     s.brach as student_branch,
+--     e.score
+-- FROM exam_scores as e
+-- INNER JOIN students as s ON s.student_id = e.student_id;

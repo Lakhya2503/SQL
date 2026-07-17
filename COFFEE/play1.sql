@@ -1,4 +1,5 @@
--- Active: 1781180299291@@127.0.0.1@5433@users
+-- Active: 1782647658205@@127.0.0.1@5432@review
+Active: 1782647658205@@127.0.0.1@5432@review
 
 -- CREATE DATABASE users;
 
@@ -76,9 +77,18 @@
 --                         AND
 -- ##############################
 
-SELECT "title","author","publicationyear","genre" FROM "books"
-WHERE ( "publicationyear" = 2013 OR "publicationyear" = 2014) AND
-NOT "genre" = 'Science Fiction';
+-- SELECT "title","author","publicationyear","genre" FROM "books"
+-- WHERE ( "publicationyear" = 2013 OR "publicationyear" = 2014) AND
+-- NOT "genre" = 'Science Fiction';
+
+-- ============ XXXXXXXXX ============
+-- ##############################
+--                         asignment operators
+-- ##############################
+
+-- Q. I wan't books which is publicationyear is before 2019 and after 2022 also the year included
+-- SELECT "title", "genre" ,"publicationyear" FROM "books" 
+-- WHERE "publicationyear" >= 2019 AND "publicationyear" <= 2022;
 
 
 
