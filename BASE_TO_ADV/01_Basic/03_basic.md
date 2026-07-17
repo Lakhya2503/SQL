@@ -1,4 +1,0 @@
-## SQL PART-3
-
-## DATABASE STRUCURE
-
