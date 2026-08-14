@@ -1,4 +1,4 @@
--- Active: 1784287945862@@127.0.0.1@5432@MyDatabase
+-- Active: 1784287945862@@127.0.0.1@5432
 
 
 
@@ -26,7 +26,7 @@
 -- WHERE
 -- ---------------- xx ----------------
 
--- SELECT * FROM customers;
+SELECT * FROM customers;
 
 -- WHERE is condition
 
@@ -39,7 +39,3 @@
 -- SELECT first_name, country FROM customers WHERE country = 'Germany';
 
 -- ---------------- xx ----------------
--- 
--- ---------------- xx ----------------
-
-# 49 : 55
