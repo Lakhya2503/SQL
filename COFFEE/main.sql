@@ -66,6 +66,8 @@ INSERT INTO employees (
         'laxman' , 'shinde', 'laxman@gmail.com', 'IT', 2430, '2014-10-2'
 )
 
+-- !DDL ( Data Defination Language )
+
 -- add a column on table
 ALTER TABLE employees
 ADD COLUMN internal_note VARCHAR(100) NOT NULL DEFAULT 'N/A'
