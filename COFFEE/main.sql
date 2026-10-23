@@ -23,3 +23,28 @@ VALUES
 
 SELECT * FROM departments;
 
+-- UNIQUE : not be duplicate
+-- TEXT : not be confirm the length
+-- INT : integer
+-- DEAFULT : when specifiecilly not to be assign not creation time
+-- DATE : date data type
+-- CHECK (employee_status IN 'active', 'on_leave', 'terminate') : check the employe on three state only 
+--  DEFAULT now() : which means current time
+-- REFERENCES departments(department_id) : refrence from deparment table department_id
+
+CREATE Table employees (
+    employees_id  SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    phone_number VARCHAR(20),
+    bio TEXT,
+    job_title VARCHAR(50) NOT NULL,
+    salary INT NOT NULL ( salary > 0 ),
+    is_active BOOLEAN NOT NULL DEFAULT TRUE ,
+    hire_data DATE NOT NULL ,
+    last_login TIMESTAMP,
+    employee_status  VARCHAR(20) NOT NULL DEFAULT 'active' CHECK (employee_status IN 'active', 'on_leave', 'terminate'),
+    create_at TIMESTAMP NOT NULL DEFAULT now(),
+    department_id INT REFERENCES departments(department_id)
+)
