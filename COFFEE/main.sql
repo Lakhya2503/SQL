@@ -31,6 +31,7 @@ SELECT * FROM departments;
 -- CHECK (employee_status IN 'active', 'on_leave', 'terminate') : check the employe on three state only 
 --  DEFAULT now() : which means current time
 -- REFERENCES departments(department_id) : refrence from deparment table department_id
+-- manager_id INT REFERENCES employees(employees_id) : also self difined
 
 CREATE Table employees (
     employees_id  SERIAL PRIMARY KEY,
@@ -40,11 +41,39 @@ CREATE Table employees (
     phone_number VARCHAR(20),
     bio TEXT,
     job_title VARCHAR(50) NOT NULL,
-    salary INT NOT NULL ( salary > 0 ),
+    salary INT NOT NULL CHECK ( salary > 0 ),
     is_active BOOLEAN NOT NULL DEFAULT TRUE ,
     hire_data DATE NOT NULL ,
     last_login TIMESTAMP,
-    employee_status  VARCHAR(20) NOT NULL DEFAULT 'active' CHECK (employee_status IN 'active', 'on_leave', 'terminate'),
+    employee_status  VARCHAR(20) NOT NULL DEFAULT 'active' 
+                        CHECK (
+                            employee_status IN ('active', 'on_leave', 'terminated')
+                        ),
     create_at TIMESTAMP NOT NULL DEFAULT now(),
-    department_id INT REFERENCES departments(department_id)
+    department_id INT REFERENCES departments(department_id),
+    manager_id INT REFERENCES employees(employees_id)
 )
+
+-- insert values on table
+INSERT INTO employees (
+    first_name ,
+    last_name ,
+    email ,
+    job_title ,
+    salary ,
+    hire_data  
+) VALUES (
+        'laxman' , 'shinde', 'laxman@gmail.com', 'IT', 2430, '2014-10-2'
+)
+
+-- add a column on table
+ALTER TABLE employees
+ADD COLUMN internal_note VARCHAR(100) NOT NULL DEFAULT 'N/A'
+
+-- rename the column
+ALTER TABLE employees
+RENAME COLUMN internal_note TO hr_note;
+
+-- delete the column
+ALTER TABLE employees
+DROP COLUMN hr_note;
