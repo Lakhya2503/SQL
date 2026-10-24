@@ -1,11 +1,14 @@
+-- %%
+-- Active: 1792772116333@@127.0.0.1@5432@postgres
 -- 1. CATEGORIES - product categories, the "parent" side of a one-to-many
 -- relationship with products.
 CREATE TABLE categories (
     category_id   SERIAL PRIMARY KEY,
     category_name VARCHAR(50) NOT NULL UNIQUE,
     description   TEXT
-);
+)
 
+-- %%
 -- 2. PRODUCTS - everything TechBazaar sells. Each belongs to exactly one
 -- category (many-to-one via category_id).
 CREATE TABLE products (
@@ -16,8 +19,9 @@ CREATE TABLE products (
     stock_quantity INT NOT NULL DEFAULT 0 CHECK (stock_quantity >= 0),
     is_active      BOOLEAN NOT NULL DEFAULT TRUE,   -- FALSE = discontinued, kept for order history
     created_at     DATE NOT NULL DEFAULT CURRENT_DATE
-);
+)
 
+-- %%
 -- 3. CUSTOMERS - people who buy from TechBazaar. referred_by is a
 -- self-referencing FK, same idea as employees.manager_id above.
 CREATE TABLE customers (
@@ -31,8 +35,9 @@ CREATE TABLE customers (
     signup_date    DATE NOT NULL DEFAULT CURRENT_DATE,
     loyalty_points INT NOT NULL DEFAULT 0,
     referred_by    INT REFERENCES customers(customer_id)
-);
+)
 
+-- %%
 -- 4. ORDERS - one row per customer order. employee_id is nullable:
 -- customers can check out on the website with no sales rep involved.
 CREATE TABLE orders (
@@ -44,8 +49,9 @@ CREATE TABLE orders (
                    CHECK (status IN ('pending', 'processing', 'completed', 'cancelled', 'refunded')),
     shipping_city VARCHAR(50),
     notes         TEXT
-);
+)
 
+-- %%
 -- 5. ORDER_ITEMS - the line items of an order: which products, how many,
 -- and at what price. unit_price is a snapshot of the price AT THE TIME of
 -- the order, since a product's catalog price can change afterwards.
@@ -56,8 +62,9 @@ CREATE TABLE order_items (
     product_id    INT NOT NULL REFERENCES products(product_id),
     quantity      INT NOT NULL CHECK (quantity > 0),
     unit_price    NUMERIC(10, 2) NOT NULL CHECK (unit_price > 0)
-);
+)
 
+-- %%
 -- 6. PAYMENTS - money actually collected against an order. Not every
 -- order has a payment yet (e.g. still 'pending').
 CREATE TABLE payments (
@@ -69,8 +76,9 @@ CREATE TABLE payments (
                    CHECK (payment_method IN ('credit_card', 'debit_card', 'paypal', 'bank_transfer', 'gift_card', 'upi')),
     status         VARCHAR(20) NOT NULL DEFAULT 'success'
                    CHECK (status IN ('success', 'failed', 'refunded'))
-);
+)
 
+-- %%
 -- Relationships at a glance:
 --   employees  (many) >─── (1) employees         [self: manager_id - already seeded above]
 --   categories (1) ───< (many) products
@@ -95,8 +103,9 @@ INSERT INTO categories (category_name, description) VALUES
     ('Books',                  'Programming, productivity and self-improvement books'),
     ('Clothing',               'Everyday apparel for men and women'),
     ('Sports & Outdoors',      'Fitness, camping and outdoor gear'),
-    ('Beauty & Personal Care', 'Skincare, haircare and personal grooming products');
+    ('Beauty & Personal Care', 'Skincare, haircare and personal grooming products')
 
+-- %%
 -- 30 products, 5 per category. Notes for later sections:
 --   - product 3 (USB-C Hub) has 0 stock
 --   - product 20 (Rain Jacket) is_active = FALSE (discontinued, still referenced by history)
@@ -131,8 +140,9 @@ INSERT INTO products (category_id, product_name, price, stock_quantity, is_activ
     (6, 'Electric Toothbrush',           49.99,  40, TRUE,  '2023-02-05'),
     (6, 'Hair Dryer',                    34.99,  30, TRUE,  '2023-02-05'),
     (6, 'Sunscreen SPF50',               15.99, 100, TRUE,  '2023-03-01'),
-    (6, 'Perfume 50ml',                  65.00,  25, TRUE,  '2023-03-01');
+    (6, 'Perfume 50ml',                  65.00,  25, TRUE,  '2023-03-01')
 
+-- %%
 -- 20 customers. Notes for later sections:
 --   - phone/city are NULL for several rows on purpose
 --   - referred_by chains a few customers back to an earlier customer
@@ -158,8 +168,9 @@ INSERT INTO customers (first_name, last_name, email, phone, city, country, signu
     ('Queenie',  'Wu',       'queenie.wu@email.com',     NULL,           'Toronto',       'Canada', '2023-11-02',  40, NULL),
     ('Ravi',     'Kapoor',   'ravi.kapoor@email.com',    NULL,           'Mumbai',        'India',  '2023-11-25',   0, NULL),
     ('Sofia',    'Nowak',    'sofia.nowak@email.com',    NULL,           NULL,            'Poland', '2023-12-05',   0, NULL),
-    ('Tomas',    'Vidal',    'tomas.vidal@email.com',    NULL,           'Madrid',        'Spain',  '2024-01-08',   0, NULL);
+    ('Tomas',    'Vidal',    'tomas.vidal@email.com',    NULL,           'Madrid',        'Spain',  '2024-01-08',   0, NULL)
 
+-- %%
 -- 45 orders, spread across Jan-Jun 2024. Statuses mixed on purpose:
 -- 'pending' orders have no payment yet, 'cancelled' orders never got
 -- paid, and customers 19/20 place none at all. employee_id values below
@@ -205,8 +216,9 @@ INSERT INTO orders (customer_id, employee_id, order_date, status, shipping_city)
     (6,  43,    '2024-06-03', 'completed', 'Seattle'),
     (1,  44,    '2024-06-11', 'completed', 'New York'),
     (15, 39,    '2024-06-15', 'completed', 'Portland'),
-    (9,  3,    '2024-06-20', 'completed', 'Boston');
+    (9,  3,    '2024-06-20', 'completed', 'Boston')
 
+-- %%
 -- Line items for every order above. Order 1's keyboard (74.99, below
 -- today's catalog price of 79.99) and order 33's book (39.99, below
 -- today's 42.00) are deliberate - proof unit_price is a per-line snapshot,
@@ -280,8 +292,9 @@ INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES
 (1405, 17,  1, 59.99),
 (1405, 16,  1, 14.99),
 (1406, 30,  1, 65.00),
-(1406, 26,  1, 18.50);
+(1406, 26,  1, 18.50)
 
+-- %%
 -- Every 'completed'/'refunded' order has one payment; 'pending' (8, 37)
 -- and 'cancelled' (4, 19, 26) orders have none - this asymmetry is what
 -- makes LEFT JOIN / NOT EXISTS examples meaningful later.
@@ -325,8 +338,10 @@ INSERT INTO payments (order_id, payment_date, amount, payment_method, status) VA
 (1420, '2024-06-08',  99.98, 'paypal',        'success'),
 (1421, '2024-06-12',  49.99, 'debit_card',    'success'),
 (1422, '2024-06-16',  74.98, 'gift_card',     'success'),
-(1423, '2024-06-21',  83.50, 'credit_card',   'success');
+(1423, '2024-06-21',  83.50, 'credit_card',   'success')
 
+-- %%
+-- Active: 1792772116333@@127.0.0.1@5432@postgres
 -- Sanity check - run this and confirm row counts. Expected: employees 8,
 -- categories 6, products 30, customers 20, orders 45, order_items 69,
 -- payments 40.
@@ -336,4 +351,4 @@ UNION ALL SELECT 'products',     COUNT(*) FROM products
 UNION ALL SELECT 'customers',    COUNT(*) FROM customers
 UNION ALL SELECT 'orders',       COUNT(*) FROM orders
 UNION ALL SELECT 'order_items',  COUNT(*) FROM order_items
-UNION ALL SELECT 'payments',     COUNT(*) FROM payments;
+UNION ALL SELECT 'payments',     COUNT(*) FROM payments

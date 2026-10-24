@@ -1,0 +1,170 @@
+# Active SQL Notebook: main.sql
+_Last updated: 10/25/2026, 1:59:21 AM_
+
+## How to edit cells (IMPORTANT for Cursor agents)
+
+SQL notebook cells are **virtual views** over a single plain-text file.
+You CANNOT edit virtual cell URIs directly — they are read-only in VS Code's file system.
+
+**Correct approach:** Edit `main.sql` directly at the line ranges shown below.
+The notebook view updates automatically when the file changes.
+
+- Cell numbers are **1-based** — Cell 1 is the first cell, Cell 2 is the second, etc.
+- To edit Cell N: edit `main.sql` at the line range shown under "Cell N" below
+- To add a new cell: insert `-- %%` followed by your SQL at the appropriate line
+- To delete a cell: remove its `-- %%` marker and SQL block from the file
+- Preserve all `-- %%` markers — they are the cell boundaries
+
+## Notebook structure (9 cells)
+
+### Cell 1 · lines 1–12 · ○ not yet run
+ 
+```sql
+-- Active: 1792772116333@@127.0.0.1@5432@sample_data
+
+    -- SERIAL: Increment the serial in postgres use also denoting is INTERGER TYPE SERIAL and SQL in use AUTOINCREMENT ,  
+    -- PRIMARY KEY : value cannot be NULL and it must be unique,
+    -- VARCHAR(50) : varible character characters 0 - 50
+    -- NOT NULL : value not be null
+
+
+CREATE TABLE departments (
+    department_id SERIAL  PRIMARY KEY, 
+    department_name VARCHAR(50) NOT NULL
+)
+```
+ 
+_Not yet executed_
+
+### Cell 2 · lines 14–18 · ○ not yet run
+ 
+```sql
+INSERt INTO departments (department_name)
+VALUES
+('Sales'),
+('Support'),
+('Warehouse')
+```
+ 
+_Not yet executed_
+
+### Cell 3 · lines 20–22 · ○ not yet run
+ 
+```sql
+INSERT INTO departments (department_id, department_name)
+VALUES
+(4, 'Tech')
+```
+ 
+_Not yet executed_
+
+### Cell 4 · lines 1–100 · ○ not yet run
+ 
+```sql
+SELECT * FROM departments
+```
+ 
+_Not yet executed_
+
+### Cell 5 · lines 26–67 · ○ not yet run
+ 
+```sql
+-- UNIQUE : not be duplicate
+-- TEXT : not be confirm the length
+-- INT : integer
+-- DEAFULT : when specifiecilly not to be assign not creation time
+-- DATE : date data type
+-- CHECK (employee_status IN 'active', 'on_leave', 'terminate') : check the employe on three state only 
+--  DEFAULT now() : which means current time
+-- REFERENCES departments(department_id) : refrence from deparment table department_id
+-- manager_id INT REFERENCES employees(employees_id) : also self difined
+
+CREATE Table employees (
+    employees_id  SERIAL PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    phone_number VARCHAR(20),
+    bio TEXT,
+    job_title VARCHAR(50) NOT NULL,
+    salary INT NOT NULL CHECK ( salary > 0 ),
+    is_active BOOLEAN NOT NULL DEFAULT TRUE ,
+    hire_data DATE NOT NULL ,
+    last_login TIMESTAMP,
+    employee_status  VARCHAR(20) NOT NULL DEFAULT 'active' 
+                        CHECK (
+                            employee_status IN ('active', 'on_leave', 'terminated')
+                        ),
+    create_at TIMESTAMP NOT NULL DEFAULT now(),
+    department_id INT REFERENCES departments(department_id),
+    manager_id INT REFERENCES employees(employees_id)
+)
+
+-- insert values on table
+INSERT INTO employees (
+    first_name ,
+    last_name ,
+    email ,
+    job_title ,
+    salary ,
+    hire_data  
+) VALUES (
+        'laxman' , 'shinde', 'laxman@gmail.com', 'IT', 2430, '2014-10-2'
+)
+```
+ 
+_Not yet executed_
+
+### Cell 6 · lines 1–100 · ○ not yet run
+ 
+```sql
+SELECT * FROM products
+```
+ 
+_Not yet executed_
+
+### Cell 7 · lines 72–80 · ○ not yet run
+ 
+```sql
+INSERT INTO employees (first_name, last_name, email, department_id, job_title, salary, manager_id, hire_date) VALUES
+    ('Priya',  'Nair',      'priya.nair@techbazaar.com',      3, 'Sales Representative', 62000.00, 3,    '2020-06-15'),
+    ('Fake',   'Robert',    'robert.chen@techbazaar.com',     2, 'Rep',                  50000.00, 3,    '2024-01-01'),
+    ('Marcus', 'Webb',      'marcus.webb@techbazaar.com',     1, 'Sales Representative', 58000.00, 3,    '2021-09-01'),
+    ('Elena',  'Garcia',    'elena.garcia@techbazaar.com',    1, 'Senior Sales Rep',     68000.00, 3,    '2019-11-20'),
+    ('James',  'Okafor',    'james.okafor@techbazaar.com',    2, 'Support Lead',         72000.00, NULL, '2018-05-10'),
+    ('Lily',   'Zhang',     'lily.zhang@techbazaar.com',      2, 'Support Agent',        48000.00, 3,    '2022-02-14'),
+    ('Diego',  'Fernandez', 'diego.fernandez@techbazaar.com', 2, 'Support Agent',        46000.00, 3,    '2023-01-09'),
+    ('Sara',   'Osei',      'sara.osei@techbazaar.com',       3, 'Warehouse Lead',       55000.00, NULL, '2020-08-23')
+```
+ 
+_Not yet executed_
+
+### Cell 8 · lines 82–90 · ○ not yet run
+ 
+```sql
+-- !DDL ( Data Defination Language )
+
+-- add a column on table
+ALTER TABLE employees
+ADD COLUMN internal_note VARCHAR(100) NOT NULL DEFAULT 'N/A'
+
+-- rename the column
+ALTER TABLE employees
+RENAME COLUMN internal_note TO hr_note
+```
+ 
+_Not yet executed_
+
+### Cell 9 · lines 92–98 · ○ not yet run
+ 
+```sql
+ALTER TABLE employees RENAME COLUMN employees_id TO employee_id
+
+ALTER TABLE employees RENAME COLUMN hire_data TO hire_date
+
+-- delete the column
+ALTER TABLE employees
+DROP COLUMN hr_note
+```
+ 
+_Not yet executed_

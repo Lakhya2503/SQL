@@ -64,7 +64,9 @@ INSERT INTO employees (
     hire_data  
 ) VALUES (
         'laxman' , 'shinde', 'laxman@gmail.com', 'IT', 2430, '2014-10-2'
-)
+);
+
+SELECT * FROM products;
 
 
 INSERT INTO employees (first_name, last_name, email, department_id, job_title, salary, manager_id, hire_date) VALUES
