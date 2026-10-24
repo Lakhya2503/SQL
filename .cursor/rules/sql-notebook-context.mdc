@@ -1,5 +1,5 @@
 # Active SQL Notebook: index.sql
-_Last updated: 10/25/2026, 1:59:24 AM_
+_Last updated: 10/25/2026, 2:03:45 AM_
 
 ## How to edit cells (IMPORTANT for Cursor agents)
 
@@ -17,37 +17,53 @@ The notebook view updates automatically when the file changes.
 
 ## Notebook structure (3 cells)
 
-### Cell 1 · lines 1–5 · ○ not yet run
+### Cell 1 · lines 1–7 · ○ not yet run
  
 ```sql
 -- Active: 1792772116333@@127.0.0.1@5432@sample_data
-
-SELECT * FROM products;
+SELECT
+    *
+FROM
+    products;
 ```
  
 _Not yet executed_
 
-### Cell 2 · lines 6–11 · ○ not yet run
+### Cell 2 · lines 8–10 · ○ not yet run
  
 ```sql
 -- UPDATE QUERY
+UPDATE products
+SET
+    is_active = FALSE
+UPDATE products
+SET
+    stock_quantity = 135
+WHERE
+    product_id = 3;
 
-UPDATE products 
-SET is_active = FALSE
+
+-- Update substract from other columns
+UPDATE products
+SET
+    stock_quantity = stock_quantity - 15;
+
+
+SELECT
+    *
+FROM
+    departments;
 ```
  
 _Not yet executed_
 
-### Cell 3 · lines 12–19 · ○ not yet run
+### Cell 3 · lines 11–33 · ○ not yet run
  
 ```sql
-UPDATE products 
-SET stock_quantity = 135
-WHERE product_id = 3;
-
--- Update substract from other columns
-UPDATE products
-SET stock_quantity = stock_quantity - 15
+-- DELETE
+DELETE FROM departments
+WHERE
+    department_id = 4;
 ```
  
 _Not yet executed_
