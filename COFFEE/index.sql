@@ -1,5 +1,6 @@
 -- %%
 -- Active: 1792772116333@@127.0.0.1@5432@sample_data
+-- ! INSERT < UPDATE < DELETE are called as DML DATA MANIPULATION LANGUAGE;
 SELECT
     *
 FROM

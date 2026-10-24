@@ -11,26 +11,12 @@ alwaysApply: false
 # Active Cell Context
 
 **File:** `index.sql`  
-**Cell:** 3 of 3  
+**Cell:** 2 of 3  
 **Connection:** None  
 
 
-## Current Cell SQL (Cell 3)
+## Current Cell SQL (Cell 2)
 
-```sql
--- DELETE
-DELETE FROM departments
-WHERE
-    department_id = 4;
-```
-
-## Available Variables
-
-_None defined_
-
-## Surrounding Cells
-
-**Previous cell (2):**
 ```sql
 -- UPDATE QUERY
 UPDATE products
@@ -46,14 +32,42 @@ WHERE
 -- Update substract from other columns
 UPDATE products
 SET
-    stock_…
+    stock_quantity = stock_quantity - 15;
+
+
+SELECT
+    *
+FROM
+    departments;
 ```
 
-_No next cell_
+## Available Variables
+
+_None defined_
+
+## Surrounding Cells
+
+**Previous cell (1):**
+```sql
+-- Active: 1792772116333@@127.0.0.1@5432@sample_data
+-- ! INSERT < UPDATE < DELETE are called as DML DATA MANIPULATION LANGUAGE;
+SELECT
+    *
+FROM
+    products;
+```
+
+**Next cell (3):**
+```sql
+-- DELETE
+DELETE FROM departments
+WHERE
+    department_id = 4;
+```
 
 ## Editing Rules
 
-- Only edit **Cell 3** unless explicitly asked to change another cell
+- Only edit **Cell 2** unless explicitly asked to change another cell
 - Preserve `-- %%` cell boundary markers when editing
 - Preserve `-- @var` and `-- @connection` directives
 - Use `{{variableName}}` syntax to reference defined variables
