@@ -66,6 +66,17 @@ INSERT INTO employees (
         'laxman' , 'shinde', 'laxman@gmail.com', 'IT', 2430, '2014-10-2'
 )
 
+
+INSERT INTO employees (first_name, last_name, email, department_id, job_title, salary, manager_id, hire_date) VALUES
+    ('Priya',  'Nair',      'priya.nair@techbazaar.com',      3, 'Sales Representative', 62000.00, 3,    '2020-06-15'),
+    ('Fake',   'Robert',    'robert.chen@techbazaar.com',     2, 'Rep',                  50000.00, 3,    '2024-01-01'),
+    ('Marcus', 'Webb',      'marcus.webb@techbazaar.com',     1, 'Sales Representative', 58000.00, 3,    '2021-09-01'),
+    ('Elena',  'Garcia',    'elena.garcia@techbazaar.com',    1, 'Senior Sales Rep',     68000.00, 3,    '2019-11-20'),
+    ('James',  'Okafor',    'james.okafor@techbazaar.com',    2, 'Support Lead',         72000.00, NULL, '2018-05-10'),
+    ('Lily',   'Zhang',     'lily.zhang@techbazaar.com',      2, 'Support Agent',        48000.00, 3,    '2022-02-14'),
+    ('Diego',  'Fernandez', 'diego.fernandez@techbazaar.com', 2, 'Support Agent',        46000.00, 3,    '2023-01-09'),
+    ('Sara',   'Osei',      'sara.osei@techbazaar.com',       3, 'Warehouse Lead',       55000.00, NULL, '2020-08-23');
+
 -- !DDL ( Data Defination Language )
 
 -- add a column on table
@@ -76,6 +87,11 @@ ADD COLUMN internal_note VARCHAR(100) NOT NULL DEFAULT 'N/A'
 ALTER TABLE employees
 RENAME COLUMN internal_note TO hr_note;
 
+ALTER TABLE employees RENAME COLUMN employees_id TO employee_id
+
+ALTER TABLE employees RENAME COLUMN hire_data TO hire_date
+
 -- delete the column
 ALTER TABLE employees
 DROP COLUMN hr_note;
+
