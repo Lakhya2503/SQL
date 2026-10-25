@@ -1,5 +1,5 @@
 # Active SQL Notebook: index.sql
-_Last updated: 10/25/2026, 9:49:17 AM_
+_Last updated: 10/25/2026, 10:01:06 AM_
 
 ## How to edit cells (IMPORTANT for Cursor agents)
 
@@ -254,10 +254,10 @@ FROM
  
 _Not yet executed_
 
-### Cell 18 · lines 153–156 · ○ not yet run
+### Cell 18 · lines 153–161 · ○ not yet run
  
 ```sql
--- give me customers who does not have phone ROW_NUMBER(
+-- give me customers who does not have phone is null
 SELECT
     *
 FROM
@@ -268,7 +268,39 @@ WHERE
  
 _Not yet executed_
 
-### Cell 19 · lines 157–159 · ○ not yet run
+### Cell 19 · lines 162–164 · ○ not yet run
+ 
+```sql
+SELECT * FROM customers WHERE phone IS NOT NULL;
+```
+ 
+_Not yet executed_
+
+### Cell 20 · lines 165–183 · ○ not yet run
+ 
+```sql
+-- Some one hase no phone number either city name show this person fallbase city = city not unavailable & phone = phon not available
+SELECT
+    first_name,
+    last_name,
+    city,
+    phone
+FROM
+    customers;
+
+
+SELECT
+    first_name,
+    last_name,
+    COALESCE(city, 'city not available') AS city ,
+    COALESCE(phone, 'phone number not available') AS phone_number
+FROM
+    customers;
+```
+ 
+_Not yet executed_
+
+### Cell 21 · lines 184–186 · ○ not yet run
  
 ```sql
 
@@ -276,7 +308,7 @@ _Not yet executed_
  
 _Not yet executed_
 
-### Cell 20 · lines 160–162 · ○ not yet run
+### Cell 22 · lines 187–189 · ○ not yet run
  
 ```sql
 
@@ -284,7 +316,7 @@ _Not yet executed_
  
 _Not yet executed_
 
-### Cell 21 · lines 163–165 · ○ not yet run
+### Cell 23 · lines 190–192 · ○ not yet run
  
 ```sql
 
@@ -292,7 +324,7 @@ _Not yet executed_
  
 _Not yet executed_
 
-### Cell 22 · lines 166–168 · ○ not yet run
+### Cell 24 · lines 193–195 · ○ not yet run
  
 ```sql
 
@@ -300,7 +332,7 @@ _Not yet executed_
  
 _Not yet executed_
 
-### Cell 23 · lines 169–171 · ○ not yet run
+### Cell 25 · lines 196–198 · ○ not yet run
  
 ```sql
 
@@ -308,7 +340,7 @@ _Not yet executed_
  
 _Not yet executed_
 
-### Cell 24 · lines 172–174 · ○ not yet run
+### Cell 26 · lines 199–201 · ○ not yet run
  
 ```sql
 
@@ -316,23 +348,7 @@ _Not yet executed_
  
 _Not yet executed_
 
-### Cell 25 · lines 175–177 · ○ not yet run
- 
-```sql
-
-```
- 
-_Not yet executed_
-
-### Cell 26 · lines 178–180 · ○ not yet run
- 
-```sql
-
-```
- 
-_Not yet executed_
-
-### Cell 27 · lines 181–182 · ○ not yet run
+### Cell 27 · lines 202–203 · ○ not yet run
  
 ```sql
 

@@ -151,7 +151,7 @@ FROM
     customers;
 
 -- %%
--- give me customers who does not have phone ROW_NUMBER(
+-- give me customers who does not have phone is null
 SELECT
     *
 FROM
@@ -160,10 +160,26 @@ WHERE
     phone IS NULL;
 
 -- %%
-
+SELECT * FROM customers WHERE phone IS NOT NULL;
 
 -- %%
+-- Some one hase no phone number either city name show this person fallbase city = city not unavailable & phone = phon not available
+SELECT
+    first_name,
+    last_name,
+    city,
+    phone
+FROM
+    customers;
 
+
+SELECT
+    first_name,
+    last_name,
+    COALESCE(city, 'city not available') AS city ,
+    COALESCE(phone, 'phone number not available') AS phone_number
+FROM
+    customers;
 
 -- %%
 

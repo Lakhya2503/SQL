@@ -11,14 +11,14 @@ alwaysApply: false
 # Active Cell Context
 
 **File:** `index.sql`  
-**Cell:** 19 of 27  
+**Cell:** 20 of 27  
 **Connection:** None  
 
 
-## Current Cell SQL (Cell 19)
+## Current Cell SQL (Cell 20)
 
 ```sql
--- empty cell
+-- Some one hase no phone number either city name show this person fallbase city = city not unavailable & phone = phon not available
 ```
 
 ## Available Variables
@@ -27,22 +27,16 @@ _None defined_
 
 ## Surrounding Cells
 
-**Previous cell (18):**
+**Previous cell (19):**
 ```sql
--- give me customers who does not have phone ROW_NUMBER(
-SELECT
-    *
-FROM
-    customers
-WHERE
-    phone IS NULL;
+SELECT * FROM customers WHERE phone IS NOT NULL;
 ```
 
 _No next cell_
 
 ## Editing Rules
 
-- Only edit **Cell 19** unless explicitly asked to change another cell
+- Only edit **Cell 20** unless explicitly asked to change another cell
 - Preserve `-- %%` cell boundary markers when editing
 - Preserve `-- @var` and `-- @connection` directives
 - Use `{{variableName}}` syntax to reference defined variables
