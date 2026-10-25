@@ -1,0 +1,37 @@
+# Active SQL Notebook: sqljoins.sql
+_Last updated: 10/25/2026, 8:41:23 PM_
+
+## How to edit cells (IMPORTANT for Cursor agents)
+
+SQL notebook cells are **virtual views** over a single plain-text file.
+You CANNOT edit virtual cell URIs directly — they are read-only in VS Code's file system.
+
+**Correct approach:** Edit `sqljoins.sql` directly at the line ranges shown below.
+The notebook view updates automatically when the file changes.
+
+- Cell numbers are **1-based** — Cell 1 is the first cell, Cell 2 is the second, etc.
+- To edit Cell N: edit `sqljoins.sql` at the line range shown under "Cell N" below
+- To add a new cell: insert `-- %%` followed by your SQL at the appropriate line
+- To delete a cell: remove its `-- %%` marker and SQL block from the file
+- Preserve all `-- %%` markers — they are the cell boundaries
+
+## Notebook structure (2 cells)
+
+### Cell 1 · lines 1–5 · ○ not yet run
+ 
+```sql
+-- ! Give me all orders including employee details of the employee who processes that order
+-- ! only include orders punched by employees
+
+SELECT * FROM orders;
+```
+ 
+_Not yet executed_
+
+### Cell 2 · lines 0–0 · ○ not yet run
+ 
+```sql
+
+```
+ 
+_Not yet executed_

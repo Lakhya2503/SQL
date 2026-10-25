@@ -1,10 +1,14 @@
 -- %%
 -- Active: 1792772116333@@127.0.0.1@5432@sample_data
 -- ! INSERT < UPDATE < DELETE are called as DML DATA MANIPULATION LANGUAGE;
+-- DQL : DATA QUARING LANGUAGE
 SELECT
     *
 FROM
     products;
+
+-- %%
+
 
 -- %%
 -- UPDATE QUERY
@@ -176,27 +180,52 @@ FROM
 SELECT
     first_name,
     last_name,
-    COALESCE(city, 'city not available') AS city ,
+    COALESCE(city, 'city not available') AS city,
     COALESCE(phone, 'phone number not available') AS phone_number
 FROM
     customers;
 
 -- %%
-
-
--- %%
-
-
--- %%
-
-
--- %%
-
+-- ! Give me products from cheapeast to expensive ORDER BY
+SELECT
+    *
+FROM
+    products
+ORDER BY
+    price ASC;
 
 -- %%
+-- ! Give me products from expensive  to cheapeast  ORDER BY
+SELECT
+    *
+FROM
+    products
+ORDER BY
+    price DESC;
 
+
+SELECT
+    *
+FROM
+    products
+ORDER BY
+    category_id,
+    price;
 
 -- %%
-
+-- ! GIve me most expensive products
+SELECT
+    *
+FROM
+    products
+ORDER BY
+    price DESC
+LIMIT
+    5;
 
 -- %%
+--! Pagination
+
+SELECT * FROM products ORDER BY product_id LIMIT 5 OFFSET 5;
+
+-- offset formula FE = (page - 1) * limit

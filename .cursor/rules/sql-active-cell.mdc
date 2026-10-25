@@ -10,15 +10,15 @@ alwaysApply: false
 
 # Active Cell Context
 
-**File:** `index.sql`  
-**Cell:** 20 of 27  
+**File:** `sqljoins.sql`  
+**Cell:** 2 of 2  
 **Connection:** None  
 
 
-## Current Cell SQL (Cell 20)
+## Current Cell SQL (Cell 2)
 
 ```sql
--- Some one hase no phone number either city name show this person fallbase city = city not unavailable & phone = phon not available
+-- empty cell
 ```
 
 ## Available Variables
@@ -27,16 +27,19 @@ _None defined_
 
 ## Surrounding Cells
 
-**Previous cell (19):**
+**Previous cell (1):**
 ```sql
-SELECT * FROM customers WHERE phone IS NOT NULL;
+-- ! Give me all orders including employee details of the employee who processes that order
+-- ! only include orders punched by employees
+
+SELECT * FROM orders;
 ```
 
 _No next cell_
 
 ## Editing Rules
 
-- Only edit **Cell 20** unless explicitly asked to change another cell
+- Only edit **Cell 2** unless explicitly asked to change another cell
 - Preserve `-- %%` cell boundary markers when editing
 - Preserve `-- @var` and `-- @connection` directives
 - Use `{{variableName}}` syntax to reference defined variables
