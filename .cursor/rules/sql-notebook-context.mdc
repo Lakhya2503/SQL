@@ -1,5 +1,5 @@
 # Active SQL Notebook: sqljoins.sql
-_Last updated: 10/25/2026, 8:41:23 PM_
+_Last updated: 10/25/2026, 10:22:34 PM_
 
 ## How to edit cells (IMPORTANT for Cursor agents)
 
@@ -15,9 +15,9 @@ The notebook view updates automatically when the file changes.
 - To delete a cell: remove its `-- %%` marker and SQL block from the file
 - Preserve all `-- %%` markers — they are the cell boundaries
 
-## Notebook structure (2 cells)
+## Notebook structure (6 cells)
 
-### Cell 1 · lines 1–5 · ○ not yet run
+### Cell 1 · lines 1–6 · ○ not yet run
  
 ```sql
 -- ! Give me all orders including employee details of the employee who processes that order
@@ -28,10 +28,46 @@ SELECT * FROM orders;
  
 _Not yet executed_
 
-### Cell 2 · lines 0–0 · ○ not yet run
+### Cell 2 · lines 7–10 · ○ not yet run
  
 ```sql
+SELECT * FROM orders AS o
+JOIN employees  AS e ON e.employee_id = o.employee_id;
+```
+ 
+_Not yet executed_
 
+### Cell 3 · lines 11–16 · ○ not yet run
+ 
+```sql
+-- ! GIve me all orders and include employee details of employee who processed that order and 
+-- ! if it is directly coming from customer keep employee details empty
+
+SELECT o.status, o.order_id, e.email, e.first_name FROM orders as o LEFT JOIN employees as e ON o.employee_id = e.employee_id;
+```
+ 
+_Not yet executed_
+
+### Cell 4 · lines 17–19 · ○ not yet run
+ 
+```sql
+SELECT o.status, o.order_id, e.email, e.first_name FROM orders as o RIGHT JOIN employees as e ON o.employee_id = e.employee_id;
+```
+ 
+_Not yet executed_
+
+### Cell 5 · lines 20–22 · ○ not yet run
+ 
+```sql
+SELECT o.status, o.order_id, e.email, e.first_name FROM orders as o FULL OUTER JOIN employees as e ON o.employee_id = e.employee_id;
+```
+ 
+_Not yet executed_
+
+### Cell 6 · lines 23–24 · ○ not yet run
+ 
+```sql
+SELECT * FROM departments CROSS JOIN categories;
 ```
  
 _Not yet executed_
