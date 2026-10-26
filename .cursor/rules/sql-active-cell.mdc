@@ -11,14 +11,17 @@ alwaysApply: false
 # Active Cell Context
 
 **File:** `sqljoins.sql`  
-**Cell:** 9 of 9  
+**Cell:** 1 of 9  
 **Connection:** None  
 
 
-## Current Cell SQL (Cell 9)
+## Current Cell SQL (Cell 1)
 
 ```sql
--- empty cell
+-- ! Give me all orders including employee details of the employee who processes that order
+-- ! only include orders punched by employees
+
+SELECT * FROM orders;
 ```
 
 ## Available Variables
@@ -27,24 +30,17 @@ _None defined_
 
 ## Surrounding Cells
 
-**Previous cell (8):**
-```sql
-SELECT
-    c.first_name,
-    c.email,
-    o.status,
-    o.order_id
-FROM
-    customers AS c
-    LEFT JOIN payments AS o ON o.customer_id = c.customer_id
-WHERE
-```
+_No previous cell_
 
-_No next cell_
+**Next cell (2):**
+```sql
+SELECT * FROM orders AS o
+JOIN employees  AS e ON e.employee_id = o.employee_id;
+```
 
 ## Editing Rules
 
-- Only edit **Cell 9** unless explicitly asked to change another cell
+- Only edit **Cell 1** unless explicitly asked to change another cell
 - Preserve `-- %%` cell boundary markers when editing
 - Preserve `-- @var` and `-- @connection` directives
 - Use `{{variableName}}` syntax to reference defined variables
