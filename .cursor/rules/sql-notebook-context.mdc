@@ -1,5 +1,5 @@
 # Active SQL Notebook: sqljoins.sql
-_Last updated: 10/25/2026, 10:22:34 PM_
+_Last updated: 10/26/2026, 1:13:33 PM_
 
 ## How to edit cells (IMPORTANT for Cursor agents)
 
@@ -15,7 +15,7 @@ The notebook view updates automatically when the file changes.
 - To delete a cell: remove its `-- %%` marker and SQL block from the file
 - Preserve all `-- %%` markers — they are the cell boundaries
 
-## Notebook structure (6 cells)
+## Notebook structure (9 cells)
 
 ### Cell 1 · lines 1–6 · ○ not yet run
  
@@ -64,10 +64,52 @@ SELECT o.status, o.order_id, e.email, e.first_name FROM orders as o FULL OUTER J
  
 _Not yet executed_
 
-### Cell 6 · lines 23–24 · ○ not yet run
+### Cell 6 · lines 23–25 · ○ not yet run
  
 ```sql
 SELECT * FROM departments CROSS JOIN categories;
+```
+ 
+_Not yet executed_
+
+### Cell 7 · lines 26–38 · ○ not yet run
+ 
+```sql
+-- ! GIve me all customers who did not place any order
+SELECT
+    c.first_name,
+    c.email,
+    o.status,
+    o.order_id
+FROM
+    customers AS c
+    LEFT JOIN orders AS o ON o.customer_id = c.customer_id
+WHERE
+    o.status IS NULL;
+```
+ 
+_Not yet executed_
+
+### Cell 8 · lines 39–50 · ○ not yet run
+ 
+```sql
+SELECT
+    c.first_name,
+    c.email,
+    o.status,
+    o.order_id
+FROM
+    customers AS c
+    LEFT JOIN payments AS o ON o.customer_id = c.customer_id
+WHERE
+```
+ 
+_Not yet executed_
+
+### Cell 9 · lines 51–52 · ○ not yet run
+ 
+```sql
+SELECT * FROM payments LIMIT 5;
 ```
  
 _Not yet executed_

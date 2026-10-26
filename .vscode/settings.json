@@ -1,4 +1,16 @@
 {
-  "sqltools.connections": [],
-  "sqlNotebook.activeConnection": "127.0.0.1@5432"
+  "sqltools.connections": [
+    {
+      "ssh": "Disabled",
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "database": "sample_data",
+      "username": "postgresql",
+      "password": "root",
+      "name": "sample_data"
+    }
+  ],
+  "sqlNotebook.activeConnection": "localhost"
 }

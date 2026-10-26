@@ -22,3 +22,31 @@ SELECT o.status, o.order_id, e.email, e.first_name FROM orders as o FULL OUTER J
 
 -- %%
 SELECT * FROM departments CROSS JOIN categories;
+
+-- %%
+-- ! GIve me all customers who did not place any order
+SELECT
+    c.first_name,
+    c.email,
+    o.status,
+    o.order_id
+FROM
+    customers AS c
+    LEFT JOIN orders AS o ON o.customer_id = c.customer_id
+WHERE
+    o.status IS NULL;
+
+-- %%
+SELECT
+    c.first_name,
+    c.email,
+    o.status,
+    o.order_id
+FROM
+    customers AS c
+    LEFT JOIN payments AS o ON o.customer_id = c.customer_id
+WHERE
+ 
+
+-- %%
+SELECT * FROM payments LIMIT 5;
